@@ -1,7 +1,6 @@
 {
   "name": "api",
   "version": "1.0.0",
-  "description": "",
   "main": "serveur.js",
   "scripts": {
     "start": "nodemon serveur.js"
@@ -15,6 +14,16 @@
     "nodemon": "^3.1.0",
     "sequelize": "^6.37.3",
     "sqlite3": "^5.1.7",
+    "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Aurlien-V/api-main1.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Aurlien-V/api-main1/issues"
+  },
+  "homepage": "https://github.com/Aurlien-V/api-main1#readme",
+  "description": ""
 }
