@@ -138,11 +138,11 @@
             "type": "string",
             "description": "Titre de la nouvelle musique"
           },
-          "src": {
+          "sound": {
             "type": "string",
             "description": "Chemin d'accès à la nouvelle musique"
           },
-          "image": {
+          "cover": {
             "type": "string",
             "description": "Chemin d'accès à l'image de la nouvelle musique"
           }
