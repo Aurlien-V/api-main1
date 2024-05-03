@@ -16,14 +16,5 @@
     "sqlite3": "^5.1.7",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Aurlien-V/api-main1.git"
-  },
-  "bugs": {
-    "url": "https://github.com/Aurlien-V/api-main1/issues"
-  },
-  "homepage": "https://github.com/Aurlien-V/api-main1#readme",
-  "description": ""
+  }
 }
