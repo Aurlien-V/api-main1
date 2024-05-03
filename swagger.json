@@ -1,159 +1,36 @@
-
 {
-    "swagger": "2.0",
-    "info": {
-      "version": "1.0.0",
-      "title": "API de Musique",
-      "description": "Une API pour gérer les musiques"
-    },
-    "basePath": "/api/v1",
-    "paths": {
-      "/": {
-        "get": {
-          "summary": "Racine de l'API",
-          "description": "Renvoie un message indiquant que l'API fonctionne correctement",
-          "responses": {
-            "200": {
-              "description": "Succès",
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "success": {
-                    "type": "string"
-                  }
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API de gestion de musique",
+    "version": "1.0.0",
+    "description": "Une API pour gérer des informations sur la musique."
+  },
+  "paths": {
+    "/api/v1/": {
+      "get": {
+        "summary": "RACINE API",
+        "responses": {
+          "200": {
+            "description": "Succès",
+            "content": {
+              "application/json": {
+                "example": {
+                  "success": "RACINE API"
                 }
               }
             }
           }
         }
       },
-      "/musique": {
-        "get": {
-          "summary": "Liste des musiques",
-          "description": "Renvoie la liste des musiques disponibles",
-          "responses": {
-            "200": {
-              "description": "Succès",
-              "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/definitions/Music"
-                }
-              }
-            }
-          }
-        },
-        "post": {
-          "summary": "Créer une musique",
-          "description": "Crée une nouvelle musique",
-          "parameters": [
-            {
-              "name": "body",
-              "in": "body",
-              "description": "Objet représentant la nouvelle musique à créer",
-              "required": true,
-              "schema": {
-                "$ref": "#/definitions/NewMusic"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Succès",
-              "schema": {
-                "$ref": "#/definitions/Music"
-              }
-            }
-          }
-        }
-      },
-      "/musique/random": {
-        "get": {
-          "summary": "Musique aléatoire",
-          "description": "Renvoie une musique aléatoire",
-          "responses": {
-            "200": {
-              "description": "Succès",
-              "schema": {
-                "$ref": "#/definitions/Music"
-              }
-            }
-          }
-        }
-      },
-      "/musique/{id}": {
-        "get": {
-          "summary": "Détails d'une musique",
-          "description": "Renvoie les détails d'une musique spécifique",
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "description": "ID de la musique",
-              "required": true,
-              "type": "integer"
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Succès",
-              "schema": {
-                "$ref": "#/definitions/Music"
-              }
-            }
-          }
-        },
-        "put": {
-          "summary": "Mettre à jour une musique",
-          "description": "Met à jour une musique spécifique",
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "description": "ID de la musique",
-              "required": true,
-              "type": "integer"
-            },
-            {
-              "name": "body",
-              "in": "body",
-              "description": "Objet représentant la musique mise à jour",
-              "required": true,
-              "schema": {
-                "$ref": "#/definitions/NewMusic"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Succès",
-              "schema": {
-                "$ref": "#/definitions/Music"
-              }
-            }
-          }
-        },
-        "delete": {
-          "summary": "Supprimer une musique",
-          "description": "Supprime une musique spécifique",
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "description": "ID de la musique",
-              "required": true,
-              "type": "integer"
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Succès",
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "message": {
-                    "type": "string"
-                  }
+      "post": {
+        "summary": "Créer une ressource",
+        "responses": {
+          "200": {
+            "description": "Succès",
+            "content": {
+              "application/json": {
+                "example": {
+                  "success": "bounty"
                 }
               }
             }
@@ -161,45 +38,123 @@
         }
       }
     },
-    "definitions": {
-      "Music": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer",
-            "description": "ID de la musique"
-          },
-          "title": {
-            "type": "string",
-            "description": "Titre de la musique"
-          },
-          "src": {
-            "type": "string",
-            "description": "Chemin d'accès à la musique"
-          },
-          "image": {
-            "type": "string",
-            "description": "Chemin d'accès à l'image de la musique"
+    "/api/v1/musics": {
+      "get": {
+        "summary": "Obtenir une liste des musiques",
+        "responses": {
+          "200": {
+            "description": "Succès",
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            }
           }
         }
       },
-      "NewMusic": {
-        "type": "object",
-        "properties": {
-          "title": {
-            "type": "string",
-            "description": "Titre de la nouvelle musique"
+      "post": {
+        "summary": "Créer une nouvelle musique",
+        "parameters": [
+          {
+            "name": "cover",
+            "in": "path",
+            "required": true,
+            "description": "Nom de la vignette de la musique à ajouter",
+            "schema": {
+              "type": "string"
+            }
           },
-          "src": {
-            "type": "string",
-            "description": "Chemin d'accès à la nouvelle musique"
+          {
+            "name": "sound",
+            "in": "path",
+            "required": true,
+            "description": "Nom du fichier audio de la musique à ajouter",
+            "schema": {
+              "type": "string"
+            }
           },
-          "image": {
-            "type": "string",
-            "description": "Chemin d'accès à l'image de la nouvelle musique"
+          {
+            "name": "title",
+            "in": "path",
+            "required": true,
+            "description": "Nom de la musique à ajouter",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "category",
+            "in": "path",
+            "required": true,
+            "description": "Catégorie de la musique à ajouter",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Succès",
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/musics/{id}": {
+      "get": {
+        "summary": "Obtenir une musique par ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "ID de la musique",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Succès",
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Supprimer une musique par ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "ID de la musique à supprimer",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Succès",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Suppression effectuée."
+                }
+              }
+            }
           }
         }
       }
     }
   }
-  
+}
